@@ -1,0 +1,13 @@
+var listener = function(status, target, name) {
+			if (status == 'add') {
+				target.addEventListener("keydown", name);
+			} else {
+				target.removeEventListener("keydown", name);
+			}
+		}
+		
+		
+		const listener = (status, target, name) => {
+			status == 'add' ? target.addEventListener("keydown", name, false) :
+				target.removeEventListener("keydown", name, false);
+		}
