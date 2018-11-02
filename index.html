@@ -1,451 +1,432 @@
 <html>
 
 <head>
-	<title>My first Three.js app</title>
-	<style>
-		body {
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			padding 0;
-		}
+    <title>My first Three.js app</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding 0;
+        }
 
-		#gameIntro {
-			position: fixed;
-			width: 100%;
-			height: 100%;
-			top: 0px;
-			left: 0px;
-			z-index: 1000;
-			margin: 0;
-			padding 0;
-			background-color: red;
-			visibility: visible;
+        #gameIntro {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+            margin: 0;
+            padding 0;
+            background-color: red;
+            visibility: visible;
 
-		}
+        }
 
-		#gameIntro p {
-			position: relative;
-			float: left;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			color: white;
-			text-align: center;
-		}
+        #gameIntro p {
+            position: relative;
+            float: left;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
 
-		#instructions {
-			position: fixed;
-			width: 100%;
-			height: 100%;
-			top: 0px;
-			left: 0px;
-			z-index: 950;
-			margin: 0;
-			padding 0;
-			background-color: blue;
-			visibility: visible;
+        #instructions {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            z-index: 950;
+            margin: 0;
+            padding 0;
+            background-color: blue;
+            visibility: visible;
 
-		}
+        }
 
-		#instructions p {
-			position: relative;
-			float: left;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			color: white;
-			text-align: center;
-		}
+        #instructions p {
+            position: relative;
+            float: left;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
 
-		#interactButton {
-			position: fixed;
-			margin: auto;
-			width: 100px;
-			height: 50px;
-			background-color: white;
-			float: left;
-			top: 80%;
-			left: 10%;
-			z-index: 900;
-			visibility: hidden;
-		}
+        #interactButton {
+            position: fixed;
+            margin: auto;
+            width: 100px;
+            height: 50px;
+            background-color: white;
+            float: left;
+            top: 80%;
+            left: 10%;
+            z-index: 900;
+            visibility: hidden;
+        }
 
-		#interactButton p {
-			color: black;
-			text-align: center;
-			position: relative;
-			float: left;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			padding: 0;
-			margin: 0;
+        #interactButton p {
+            color: black;
+            text-align: center;
+            position: relative;
+            float: left;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0;
+            margin: 0;
 
-		}
+        }
 
-		#textEventOne {
-			position: fixed;
-			margin: auto;
-			width: 400px;
-			height: 100px;
-			background-color: red;
-			opacity: 0.5;
-			float: left;
-			transform: translate(-50%, -50%);
-			top: 80%;
-			left: 50%;
-			z-index: 900;
-			visibility: hidden;
-		}
+        #textEventOne {
+            position: fixed;
+            margin: auto;
+            width: 400px;
+            height: 100px;
+            background-color: red;
+            opacity: 0.5;
+            float: left;
+            transform: translate(-50%, -50%);
+            top: 80%;
+            left: 50%;
+            z-index: 900;
+            visibility: hidden;
+        }
 
-		#textEventOne p {
-			color: black;
-			text-align: center;
-			position: relative;
-			float: left;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			padding: 0;
-			margin: 0;
+        #textEventOne p {
+            color: black;
+            text-align: center;
+            position: relative;
+            float: left;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0;
+            margin: 0;
 
-		}
+        }
 
-		#textEventOne_op_1 {
-			position: fixed;
-			margin: auto;
-			width: 400px;
-			height: 100px;
-			background-color: white;
-			opacity: 0.5;
-			float: left;
-			transform: translate(-50%, -50%);
+        #textEventOne_op_1 {
+            position: fixed;
+            margin: auto;
+            width: 400px;
+            height: 100px;
+            background-color: white;
+            opacity: 0.5;
+            float: left;
+            transform: translate(-50%, -50%);
 
-			top: 80%;
-			left: 50%;
-			z-index: 900;
-			visibility: hidden;
-		}
+            top: 80%;
+            left: 50%;
+            z-index: 900;
+            visibility: hidden;
+        }
 
-		#textEventOne_op_1 p {
-			color: black;
-			text-align: center;
-			position: relative;
-			float: left;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			padding: 0;
-			margin: 0;
+        #textEventOne_op_1 p {
+            color: black;
+            text-align: center;
+            position: relative;
+            float: left;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0;
+            margin: 0;
 
-		}
+        }
 
-		#textEventOne_op_2 {
-			position: fixed;
-			margin: auto;
-			width: 400px;
-			height: 100px;
-			background-color: white;
-			opacity: 0.5;
-			float: left;
-			transform: translate(-50%, -50%);
+        #textEventOne_op_2 {
+            position: fixed;
+            margin: auto;
+            width: 400px;
+            height: 100px;
+            background-color: white;
+            opacity: 0.5;
+            float: left;
+            transform: translate(-50%, -50%);
 
-			top: 80%;
-			left: 50%;
-			z-index: 900;
-			visibility: hidden;
-		}
+            top: 80%;
+            left: 50%;
+            z-index: 900;
+            visibility: hidden;
+        }
 
-		#textEventOne_op_2 p {
-			color: black;
-			text-align: center;
-			position: relative;
-			float: left;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			padding: 0;
-			margin: 0;
+        #textEventOne_op_2 p {
+            color: black;
+            text-align: center;
+            position: relative;
+            float: left;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0;
+            margin: 0;
 
-		}
+        }
 
-		#confused {
-			position: fixed;
-			margin: 0;
-			padding: 0;
-			width: 200px;
-			height: 50px;
-			background-color: white;
-			float: left;
-			transform: translate(-50%, -50%);
-			top: 70%;
-			left: 50%;
-			z-index: 900;
-			visibility: hidden;
-		}
+        #confused {
+            position: fixed;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            height: 50px;
+            background-color: white;
+            float: left;
+            transform: translate(-50%, -50%);
+            top: 70%;
+            left: 50%;
+            z-index: 900;
+            visibility: hidden;
+        }
 
-		#confused p {
-			color: black;
-			text-align: center;
-			position: relative;
-			float: left;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			padding: 0;
-			margin: 0;
+        #confused p {
+            color: black;
+            text-align: center;
+            position: relative;
+            float: left;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0;
+            margin: 0;
 
-		}
-	</style>
+        }
+    </style>
 </head>
 
 <body>
-	<script src="js/three.min.js"></script>
-	<script src="js/Detector.js"></script>
-	<script src="js/ColladaLoader.js"></script>
-
-	<script>
-		var scene, camera, renderer, model;
-		//			Declares main variables
-
-		//		var interactVisbility = document.getElementById('interactButton').style.visibility = "hidden";
-		//			Declares other variables
-
-
-		//		function init() {
-		//			if (!Detector.webgl) Dectector.addGetWebGLMessage();
-		//			Alerts user is their browser doesnt support webGL
-
-
-		scene = new THREE.Scene();
-		//			Creates the new three.js scene
-
-		scene.fog = new THREE.FogExp2(0xb6d9e6, 0.009);
-		camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-		//			75 = field of view, window.innerWidth/window.innerHeight = ?, 0.1, 				1000 = meters — size of viewing model
-
-		renderer = new THREE.WebGLRenderer({
-			antialias: true
-		});
-		// 			Smoothes lines
-
-		renderer.setSize(window.innerWidth, window.innerHeight);
-
-		document.body.appendChild(renderer.domElement);
-		//			places render onto canvas
-
-		var geometry = new THREE.BoxGeometry(5, 5, 5);
-		var material = new THREE.MeshBasicMaterial({
-			color: 0x00ff00
-		});
-		var materialTrigger = new THREE.MeshBasicMaterial({
-			color: 0xff0076
-		});
-
-		model = new THREE.Mesh(geometry, material);
-		//			dont need to say "var model = " because it was declared at the top
-
-		var trigger = new THREE.Mesh(geometry, materialTrigger);
-
-		scene.add(model, trigger);
-		camera.position.z = 50;
-
-		trigger.position.x = 20;
-
-		//			camera.add(model);
-		//		model.position.set (0, 100, 0);
-		console.log(camera);
-
-
-		var loader = new THREE.ColladaLoader();
-		loader.options.convertUpAxis = true;
-		loader.load('testModel.dae', function(collada) {
-
-			var dae = collada.scene;
-
-			dae.traverse(function(child) {
-				if (child instanceof THREE.Mesh) {
-					child.castShadow = true;
-					child.receiveShadow = true;
-				}
-			});
-
-			dae.scale.x = dae.scale.y = dae.scale.z = 0.5;
-			dae.updateMatrix();
-			scene.add(dae);
-
-			var light = scene.getObjectByName("SpLight", true);
-			light = light.children[0];
-			light.castShadow = true;
-			light.distance = 1000;
-			light.penumbra = 1;
-
-			render();
-		});
-
-
-		//		### FUNCTION TO ADD AND REMOVE EVENT LISTENERS ####
-		const listener = (status, target, name) => {
-			// creates function "listener" w/ parameters status, target, and name
-			status == 'add' ? target.addEventListener("keydown", name, false) :
-				// if status is add, you add the event listener
-				target.removeEventListener("keydown", name, false);
-			// otherwise, remove it
-		}
-
-
-		//		##### CODE FOR TITLE PAGE #####
-		listener("add", document, passTitlePage)
-
-		function passTitlePage(event) {
-			var keyCode = event.which;
-			if (keyCode == 32) {
-				//				document.getElementById('gameIntro').style.visibility = "hidden";
-				//			} else if {
-				//				document.getElementById('gameIntro').style.visibility = "visible";
-				//			}
-				var removal = document.getElementById("gameIntro");
-				removal.remove();
-				listener("add", document, passInstructions);
-				listener("remove", document, passTitlePage);
-			}
-		}
-
-		var add = function(event) {
-			console.log(event)
-		}
-
-
-
-
-		//		##### CODE FOR INSTRUCTION PAGE #####
-
-		function passInstructions(event) {
-			var keyCode = event.which;
-			if (keyCode == 49) {
-				//				document.getElementById('gameIntro').style.visibility = "hidden";
-				//			} else if {
-				//				document.getElementById('gameIntro').style.visibility = "visible";
-				//			}
-
-				document.getElementById("instructions").style.visibility = "hidden";
-				document.getElementById("confused").style.visibility = "hidden";
-
-
-			}
-			if (keyCode == 50) {
-				document.getElementById("confused").style.visibility = "visible";
-			}
-			if (keyCode == 73) {
-				document.getElementById("instructions").style.visibility = "visible";
-			}
-		}
-
-
-
-		//		#### CODE FOR WHEN INTERACT BUTTON POPS UP ####
-
-
-		function checkPosition() {
-			if (camera.position.x >= 15 && camera.position.x <= 30) {
-				console.log("positionAchieved");
-				document.getElementById('interactButton').style.visibility = "visible";
-
-			} else {
-				console.log("positionNotAchieved");
-				document.getElementById('interactButton').style.visibility = "hidden";
-			}
-		}
-
-		//		#### CODE FOR INITIATING TEXT EVENT ####
-		listener("remove", document, passInstructions);
-		listener("add", document, textEvent);
-
-		function textEvent() {
-			keyCode = event.which;
-			if (camera.position.x >= 15 && camera.position.x <= 30 && keyCode == 88) {
-				console.log("TEXT EVENT ONE!")
-				document.getElementById('textEventOne').style.visibility = "visible";
-			}
-			if (camera.position.x >= 15 && camera.position.x <= 30 && keyCode == 49) {
-				console.log("Text response one!")
-				document.getElementById('textEventOne').style.visibility = "hidden";
-				document.getElementById('textEventOne_op_1').style.visibility = "visible";
-
-			}
-			if (camera.position.x >= 15 && camera.position.x <= 30 && keyCode == 50) {
-				console.log("Text response two!")
-				document.getElementById('textEventOne').style.visibility = "hidden";
-				document.getElementById('textEventOne_op_2').style.visibility = "visible";
-
-			}
-
-		}
-
-		//		#### CODE FOR CONTINUTING TEXT EVENTS ####
-
-		//			###### CODE FOR MOVING CHARACTER ######
-		var xMovement = 1;
-
-		document.addEventListener("keydown", movingCharacter, false);
-
-		function movingCharacter(event) {
-			var keyCode = event.which;
-			if (keyCode == 37) {
-				model.position.x -= xMovement;
-				camera.position.x -= xMovement;
-
-			} else if (keyCode == 39) {
-				model.position.x += xMovement;
-				camera.position.x += xMovement;
-				console.log(model.position);
-				checkPosition();
-			}
-
-
-
-			render();
-		};
-		var render = function() {
-			//  requestAnimationFrame(render);
-			//  cube.rotation.x += 0.03;
-			//  cube.rotation.y += 0.02;
-			//  cube.rotation.z += 0.01;
-			renderer.render(scene, camera);
-		};
-
-		render();
-	</script>
-
-	<div id="gameIntro">
-		<p>This is the section of the game where the game setting is layed out.<br> Press Space to continue...</p>
-	</div>
-
-	<div id="interactButton">
-		<p>Press X to Interact</p>
-	</div>
-
-	<div id="instructions">
-		<p>1. used left and right arrow keys to navigate <br> 2. when you see text like this: <br> [1] Type the number that [2] is next to your desired response <br><br> Got it? <br><br> [1] Hell, yeah! [2] Nope. <br><br> psst... if you ever forget the instructions, hit [I] to pull them up</p>
-		<div id="confused">
-			<p>hmmm....maybe re-read the instructions?</p>
-		</div>
-	</div>
-
-
-
-	<div id="textEventOne">
-		<p>This is Text Event One<br><br> [1] They can pick response ONE [2] OR they can pick response TWO</p>
-	</div>
-
-	<div id="textEventOne_op_1">
-		<p>This is the response if they hit option one</p>
-	</div>
-
-	<div id="textEventOne_op_2">
-		<p>This is the response if they hit option two</p>
-	</div>
+    <script src="js/three.min.js"></script>
+    <script src="js/Detector.js"></script>
+    <script src="js/ColladaLoader.js"></script>
+
+    <script>
+        var scene, camera, renderer, model;
+        //			Declares main variables
+
+        //		var interactVisbility = document.getElementById('interactButton').style.visibility = "hidden";
+        //			Declares other variables
+
+
+        //		function init() {
+        //			if (!Detector.webgl) Dectector.addGetWebGLMessage();
+        //			Alerts user is their browser doesnt support webGL
+
+
+        scene = new THREE.Scene();
+        //			Creates the new three.js scene
+
+        scene.fog = new THREE.FogExp2(0xb6d9e6, 0.009);
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        //			75 = field of view, window.innerWidth/window.innerHeight = ?, 0.1, 				1000 = meters — size of viewing model
+
+        renderer = new THREE.WebGLRenderer({
+            antialias: true
+        });
+        // 			Smoothes lines
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        document.body.appendChild(renderer.domElement);
+        //			places render onto canvas
+
+        var geometry = new THREE.BoxGeometry(5, 5, 5);
+        var material = new THREE.MeshBasicMaterial({
+            color: 0x00ff00
+        });
+        var materialTrigger = new THREE.MeshBasicMaterial({
+            color: 0xff0076
+        });
+
+        model = new THREE.Mesh(geometry, material);
+        //			dont need to say "var model = " because it was declared at the top
+
+        var trigger = new THREE.Mesh(geometry, materialTrigger);
+
+        scene.add(model, trigger);
+        camera.position.z = 50;
+
+        trigger.position.x = 20;
+
+        //			camera.add(model);
+        //		model.position.set (0, 100, 0);
+        console.log(camera);
+
+
+        var loader = new THREE.ColladaLoader();
+        loader.options.convertUpAxis = true;
+        loader.load('testModel.dae', function(collada) {
+            var dae = collada.scene;
+            dae.traverse(function(child) {
+                if (child instanceof THREE.Mesh) {
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                }
+            });
+            dae.scale.x = dae.scale.y = dae.scale.z = 0.5;
+            dae.updateMatrix();
+            scene.add(dae);
+
+            var light = scene.getObjectByName("SpLight", true);
+            light = light.children[0];
+            light.castShadow = true;
+            light.distance = 1000;
+            light.penumbra = 1;
+
+            render();
+        });
+
+
+        //		### FUNCTION TO ADD AND REMOVE EVENT LISTENERS ####
+        const listener = (status, target, name) => {
+            // creates function "listener" w/ parameters status, target, and name
+            status == 'add' ? target.addEventListener("keydown", name, false) :
+                // if status is add, you add the event listener
+                target.removeEventListener("keydown", name, false);
+            // otherwise, remove it
+        }
+
+
+        //		##### CODE FOR TITLE PAGE #####
+        listener("add", document, passTitlePage)
+
+        function passTitlePage(event) {
+            var keyCode = event.which;
+            if (keyCode == 32) {
+                //				document.getElementById('gameIntro').style.visibility = "hidden";
+                //			} else if {
+                //				document.getElementById('gameIntro').style.visibility = "visible";
+                //			}
+                var removal = document.getElementById("gameIntro");
+                removal.remove();
+                listener("add", document, passInstructions);
+                listener("remove", document, passTitlePage);
+            }
+        }
+
+        var add = function(event) {
+            console.log(event)
+        }
+
+        //		##### CODE FOR INSTRUCTION PAGE #####
+
+        function passInstructions(event) {
+            let keyCode = event.which;
+            if (keyCode == 49) {
+                //				document.getElementById('gameIntro').style.visibility = "hidden";
+                //			} else if {
+                //				document.getElementById('gameIntro').style.visibility = "visible";
+                //			}
+
+                document.getElementById("instructions").style.visibility = "hidden";
+                document.getElementById("confused").style.visibility = "hidden";
+                listener("remove", document, passInstructions);
+                console.log('removed the listener');
+            } else if (keyCode == 50) {
+                document.getElementById("confused").style.visibility = "visible";
+            } else if (keyCode == 73) {
+                document.getElementById("instructions").style.visibility = "visible";
+            }
+        }
+        //		#### CODE FOR WHEN INTERACT BUTTON POPS UP ####
+
+
+        function checkPosition() {
+            if (camera.position.x >= 15 && camera.position.x <= 30) {
+                document.getElementById('interactButton').style.visibility = "visible";
+
+            } else {
+                document.getElementById('interactButton').style.visibility = "hidden";
+            }
+        }
+        //		#### CODE FOR INITIATING TEXT EVENT ####
+        listener("add", document, textEvent);
+
+        function textEvent() {
+            keyCode = event.which;
+            if (camera.position.x >= 15 && camera.position.x <= 30 && keyCode == 88) {
+                console.log("TEXT EVENT ONE!")
+                document.getElementById('textEventOne').style.visibility = "visible";
+            }
+            if (camera.position.x >= 15 && camera.position.x <= 30 && keyCode == 49) {
+                console.log("Text response one!")
+                document.getElementById('textEventOne').style.visibility = "hidden";
+                document.getElementById('textEventOne_op_1').style.visibility = "visible";
+
+            }
+            if (camera.position.x >= 15 && camera.position.x <= 30 && keyCode == 50) {
+                console.log("Text response two!")
+                document.getElementById('textEventOne').style.visibility = "hidden";
+                document.getElementById('textEventOne_op_2').style.visibility = "visible";
+
+            }
+
+        }
+        //		#### CODE FOR CONTINUTING TEXT EVENTS ####
+
+        //			###### CODE FOR MOVING CHARACTER ######
+        var xMovement = 1;
+
+        document.addEventListener("keydown", movingCharacter, false);
+
+        function movingCharacter(event) {
+            var keyCode = event.which;
+            if (keyCode == 37) {
+                model.position.x -= xMovement;
+                camera.position.x -= xMovement;
+
+            } else if (keyCode == 39) {
+                model.position.x += xMovement;
+                camera.position.x += xMovement;
+                console.log(model.position);
+                checkPosition();
+            }
+            render();
+        };
+        var render = function() {
+            //  requestAnimationFrame(render);
+            //  cube.rotation.x += 0.03;
+            //  cube.rotation.y += 0.02;
+            //  cube.rotation.z += 0.01;
+            renderer.render(scene, camera);
+        };
+
+        render();
+    </script>
+
+    <div id="gameIntro">
+        <p>This is the section of the game where the game setting is layed out.<br> Press Space to continue...</p>
+    </div>
+
+    <div id="interactButton">
+        <p>Press X to Interact</p>
+    </div>
+
+    <div id="instructions">
+        <p>1. used left and right arrow keys to navigate <br> 2. when you see text like this: <br> [1] Type the number that [2] is next to your desired response <br><br> Got it? <br><br> [1] Hell, yeah! [2] Nope. <br><br> psst... if you ever forget the instructions, hit [I] to pull them up</p>
+        <div id="confused">
+            <p>hmmm....maybe re-read the instructions?</p>
+        </div>
+    </div>
+
+
+
+    <div id="textEventOne">
+        <p>This is Text Event One<br><br> [1] They can pick response ONE [2] OR they can pick response TWO</p>
+    </div>
+
+    <div id="textEventOne_op_1">
+        <p>This is the response if they hit option one</p>
+    </div>
+
+    <div id="textEventOne_op_2">
+        <p>This is the response if they hit option two</p>
+    </div>
 
 
 </body>
