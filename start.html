@@ -18,77 +18,78 @@
 
 	<script>
 		var scene, camera, renderer, model;
-//			Declares main variables
+		//			Declares main variables
 
-//		function init() {
-//			if (!Detector.webgl) Dectector.addGetWebGLMessage();
-//			Alerts user is their browser doesnt support webGL
+		//		function init() {
+		//			if (!Detector.webgl) Dectector.addGetWebGLMessage();
+		//			Alerts user is their browser doesnt support webGL
 
 
-			scene = new THREE.Scene();
-//			Creates the new three.js scene
-			camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-//			75 = field of view, window.innerWidth/window.innerHeight = ?, 0.1, 				1000 = meters — size of viewing model
-			
-			var renderer = new THREE.WebGLRenderer
-			({
-					antialias: true
-				});
-// 			Smoothes lines
-			
-			renderer.setSize(window.innerWidth, window.innerHeight);
-			
-			document.body.appendChild(renderer.domElement);
-//			places render onto canvas
+		scene = new THREE.Scene();
+		//			Creates the new three.js scene
+		camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+		//			75 = field of view, window.innerWidth/window.innerHeight = ?, 0.1, 				1000 = meters — size of viewing model
 
-			var geometry = new THREE.BoxGeometry(5, 5, 5);
-			var material = new THREE.MeshBasicMaterial({
-			color: 0x00ff00});
-			var materialTrigger = new THREE.MeshBasicMaterial({
-			color: 0xff0076});
+		var renderer = new THREE.WebGLRenderer({
+			antialias: true
+		});
+		// 			Smoothes lines
 
-			model = new THREE.Mesh(geometry, material);
-//			dont need to say "var model = " because it was declared at the top
-		
-			var trigger = new THREE.Mesh(geometry, materialTrigger);
+		renderer.setSize(window.innerWidth, window.innerHeight);
 
-			scene.add(model, trigger);
-			camera.position.z = 50;
-		
-			trigger.position.x = 20;
-		
-			camera.add(model);
-		model.position.set (0, 100, 0);
+		document.body.appendChild(renderer.domElement);
+		//			places render onto canvas
+
+		var geometry = new THREE.BoxGeometry(5, 5, 5);
+		var material = new THREE.MeshBasicMaterial({
+			color: 0x00ff00
+		});
+		var materialTrigger = new THREE.MeshBasicMaterial({
+			color: 0xff0076
+		});
+
+		model = new THREE.Mesh(geometry, material);
+		//			dont need to say "var model = " because it was declared at the top
+
+		var trigger = new THREE.Mesh(geometry, materialTrigger);
+
+		scene.add(model, trigger);
+		camera.position.z = 50;
+
+		trigger.position.x = 20;
+
+		camera.add(model);
+		model.position.set(0, 100, 0);
 		console.log(camera);
 
-		
 
 
-			
-			var xMovement = 1;
 
-			document.addEventListener("keydown", onDocumentKeyDown, false);
 
-			function onDocumentKeyDown(event) {
-				var keyCode = event.which;
-				if (keyCode == 37) {
-					model.position.x -= xMovement;
-				} else if (keyCode == 39) {
-					model.position.x += xMovement;
-				}
+		var xMovement = 1;
 
-				render();
-			};
+		document.addEventListener("keydown", onDocumentKeyDown, false);
 
-			var render = function() {
-				//  requestAnimationFrame(render);
-				//  cube.rotation.x += 0.03;
-				//  cube.rotation.y += 0.02;
-				//  cube.rotation.z += 0.01;
-				renderer.render(scene, camera);
-			};
+		function onDocumentKeyDown(event) {
+			var keyCode = event.which;
+			if (keyCode == 37) {
+				model.position.x -= xMovement;
+			} else if (keyCode == 39) {
+				model.position.x += xMovement;
+			}
 
 			render();
+		};
+
+		var render = function() {
+			//  requestAnimationFrame(render);
+			//  cube.rotation.x += 0.03;
+			//  cube.rotation.y += 0.02;
+			//  cube.rotation.z += 0.01;
+			renderer.render(scene, camera);
+		};
+
+		render();
 	</script>
 
 
